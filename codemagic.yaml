@@ -78,10 +78,10 @@ workflows:
         notify:
           success: true
           failure: true
-      google_play:
-        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
-        track: $GOOGLE_PLAY_TRACK
-        submit_as_draft: true
+      # google_play: # <-- Configure Google Play service account credentials in Codemagic UI first
+        # credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+        # track: $GOOGLE_PLAY_TRACK
+        # submit_as_draft: true
 
   react-native-ios:
     name: React Native iOS
