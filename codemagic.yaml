@@ -44,7 +44,8 @@ workflows:
       - name: Install npm dependencies
         script: |
           cd mobile-app
-          npm ci --legacy-peer-deps
+          rm -f package-lock.json
+          npm install --legacy-peer-deps
       - name: Install CocoaPods dependencies
         script: |
           cd mobile-app/ios && pod install
