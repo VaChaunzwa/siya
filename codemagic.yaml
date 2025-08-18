@@ -147,12 +147,12 @@ workflows:
         notify:
           success: true
           failure: true
-      app_store_connect:
-        auth: integration
-        submit_to_testflight: true
-        beta_groups:
-          - App Store Connect Users
-        submit_to_app_store: false
+      # app_store_connect: # <-- Configure App Store Connect integration in Codemagic UI first
+        # auth: integration
+        # submit_to_testflight: true
+        # beta_groups:
+          # - App Store Connect Users
+        # submit_to_app_store: false
 
   react-native-web:
     name: React Native Web
