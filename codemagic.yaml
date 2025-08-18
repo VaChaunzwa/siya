@@ -1,0 +1,194 @@
+# Codemagic configuration file for Siya Portal Mobile App
+# https://docs.codemagic.io/yaml-basic-configuration/yaml-getting-started/
+
+workflows:
+  react-native-android:
+    name: React Native Android
+    max_build_duration: 120
+    instance_type: mac_mini_m1
+    integrations:
+      app_store_connect: codemagic
+    environment:
+      android_signing:
+        - keystore_reference
+      groups:
+        - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS <-- Put your google-services.json here)
+      vars:
+        PACKAGE_NAME: "com.siya.portal.mobile" # <-- Put your package name here
+        GOOGLE_PLAY_TRACK: internal # <-- Any default internal track that is not in production
+        EXPO_USE_FAST_RESOLVER: 1
+        GRADLE_OPTS: "-Dorg.gradle.jvmargs=-Xmx4096m -Dorg.gradle.daemon=false"
+      node: 20.11.0
+      npm: 10
+      ndk: r25b
+      java: 17
+    triggering:
+      events:
+        - push
+        - tag
+        - pull_request
+      branch_patterns:
+        - pattern: develop
+          include: true
+          source: true
+        - pattern: main
+          include: true
+          source: true
+    scripts:
+      - name: Set up local.properties
+        script: |
+          echo "sdk.dir=$ANDROID_SDK_ROOT" > "$CM_BUILD_DIR/mobile-app/android/local.properties"
+      - name: Install npm dependencies
+        script: |
+          cd mobile-app
+          npm ci --legacy-peer-deps
+      - name: Install CocoaPods dependencies
+        script: |
+          cd mobile-app/ios && pod install
+      - name: Set up keystore
+        script: |
+          cd mobile-app/android
+          echo $CM_KEYSTORE | base64 --decode > app/my-upload-key.keystore
+          cat >> gradle.properties <<EOF
+          MYAPP_UPLOAD_STORE_FILE=my-upload-key.keystore
+          MYAPP_UPLOAD_KEY_ALIAS=$CM_KEY_ALIAS
+          MYAPP_UPLOAD_STORE_PASSWORD=$CM_KEYSTORE_PASSWORD
+          MYAPP_UPLOAD_KEY_PASSWORD=$CM_KEY_PASSWORD
+          EOF
+      - name: Clean Gradle cache
+        script: |
+          cd mobile-app/android
+          ./gradlew clean
+      - name: Build Android release
+        script: |
+          cd mobile-app
+          export EAS_SKIP_AUTO_FINGERPRINT=1
+          npx eas build --platform android --profile production --local --output ./build.apk
+    artifacts:
+      - mobile-app/android/app/build/outputs/**/*.apk
+      - mobile-app/android/app/build/outputs/**/*.aab
+      - mobile-app/build.apk
+    publishing:
+      email:
+        recipients:
+          - herbert.chaunzwa@example.com # <-- Put your email here
+        notify:
+          success: true
+          failure: true
+      google_play:
+        credentials: $GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+        track: $GOOGLE_PLAY_TRACK
+        submit_as_draft: true
+
+  react-native-ios:
+    name: React Native iOS
+    max_build_duration: 120
+    instance_type: mac_mini_m1
+    integrations:
+      app_store_connect: codemagic
+    environment:
+      ios_signing:
+        distribution_type: app_store
+        bundle_identifier: com.siya.portal.mobile
+      vars:
+        BUNDLE_ID: "com.siya.portal.mobile" # <-- Put your bundle identifier here
+        XCODE_WORKSPACE: "SiyaPortalMobile.xcworkspace" # <-- Put the name of your Xcode workspace here
+        XCODE_SCHEME: "SiyaPortalMobile" # <-- Put the name of your Xcode scheme here
+        APP_ID: 1234567890 # <-- Put the app id number here. This is found in App Store Connect > App > General > App Information
+      node: 20.11.0
+      npm: 10
+      xcode: latest
+      cocoapods: default
+    triggering:
+      events:
+        - push
+        - tag
+        - pull_request
+      branch_patterns:
+        - pattern: develop
+          include: true
+          source: true
+        - pattern: main
+          include: true
+          source: true
+    scripts:
+      - name: Install npm dependencies
+        script: |
+          cd mobile-app
+          npm ci --legacy-peer-deps
+      - name: Install CocoaPods dependencies
+        script: |
+          cd mobile-app/ios && pod install
+      - name: Set up provisioning profiles settings on Xcode project
+        script: |
+          cd mobile-app/ios
+          xcode-project use-profiles
+      - name: Increment build number
+        script: |
+          cd mobile-app/ios
+          LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number "$APP_ID")
+          agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
+      - name: Build ipa for distribution
+        script: |
+          cd mobile-app
+          export EAS_SKIP_AUTO_FINGERPRINT=1
+          npx eas build --platform ios --profile production --local --output ./build.ipa
+    artifacts:
+      - mobile-app/ios/build/ios/ipa/*.ipa
+      - /tmp/xcodebuild_logs/*.log
+      - mobile-app/build.ipa
+    publishing:
+      email:
+        recipients:
+          - herbert.chaunzwa@example.com # <-- Put your email here
+        notify:
+          success: true
+          failure: true
+      app_store_connect:
+        auth: integration
+        submit_to_testflight: true
+        beta_groups:
+          - App Store Connect Users
+        submit_to_app_store: false
+
+  react-native-web:
+    name: React Native Web
+    max_build_duration: 60
+    instance_type: linux_x2
+    environment:
+      node: 18.17.0
+      npm: 9
+    triggering:
+      events:
+        - push
+        - pull_request
+      branch_patterns:
+        - pattern: develop
+          include: true
+          source: true
+        - pattern: main
+          include: true
+          source: true
+    scripts:
+      - name: Install npm dependencies
+        script: |
+          cd mobile-app
+          npm ci --legacy-peer-deps
+      - name: Build web app
+        script: |
+          cd mobile-app
+          npx expo export:web
+      - name: Run tests
+        script: |
+          cd mobile-app
+          npm test -- --coverage --watchAll=false
+    artifacts:
+      - mobile-app/dist/**
+      - mobile-app/coverage/**
+    publishing:
+      email:
+        recipients:
+          - herbert.chaunzwa@example.com # <-- Put your email here
+        notify:
+          success: true
+          failure: true
