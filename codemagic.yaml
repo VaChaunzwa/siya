@@ -9,11 +9,13 @@ workflows:
     integrations:
       app_store_connect: codemagic
     environment:
-      android_signing:
-        - keystore_reference
       groups:
         - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS <-- Put your google-services.json here)
       vars:
+        CM_KEYSTORE: Encrypted(...) # <-- Put your keystore file here (base64 encoded)
+        CM_KEYSTORE_PASSWORD: Encrypted(...) # <-- Put your keystore password here
+        CM_KEY_ALIAS: Encrypted(...) # <-- Put your key alias here
+        CM_KEY_PASSWORD: Encrypted(...) # <-- Put your key password here
         PACKAGE_NAME: "com.siya.portal.mobile" # <-- Put your package name here
         GOOGLE_PLAY_TRACK: internal # <-- Any default internal track that is not in production
         EXPO_USE_FAST_RESOLVER: 1
