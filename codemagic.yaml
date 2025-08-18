@@ -7,7 +7,7 @@ workflows:
     max_build_duration: 120
     instance_type: mac_mini_m1
     # integrations:
-      # app_store_connect: codemagic # <-- Configure App Store Connect integration in Codemagic UI first
+    # app_store_connect: codemagic # <-- Configure App Store Connect integration in Codemagic UI first
     environment:
       groups:
         - google_play # <-- (Includes GCLOUD_SERVICE_ACCOUNT_CREDENTIALS <-- Put your google-services.json here)
