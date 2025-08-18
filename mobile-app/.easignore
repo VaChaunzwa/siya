@@ -1,0 +1,113 @@
+# EAS Build ignore file
+# This file specifies which files and directories should be excluded from the build archive
+# to reduce upload time and archive size
+
+# Existing exclusions
+package-2.json
+
+# Node modules (already handled by EAS, but good to be explicit)
+node_modules/
+
+# Build outputs
+build/
+dist/
+.expo/
+.expo-shared/
+
+# Development files
+.vscode/
+.idea/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Documentation and guides
+*.md
+README*
+CHANGELOG*
+LICENSE*
+docs/
+
+# Test files
+__tests__/
+*.test.js
+*.test.ts
+*.test.tsx
+*.spec.js
+*.spec.ts
+*.spec.tsx
+coverage/
+.nyc_output/
+jest.config.*
+
+# Environment files (should use EAS environment variables instead)
+.env*
+!.env.example
+
+# Cache directories
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.temp
+
+# Editor files
+*.swp
+*.swo
+*~
+
+# Package manager files
+yarn.lock
+package-lock.json
+pnpm-lock.yaml
+
+# Android specific (if not needed for build)
+android/app/build/
+android/build/
+android/.gradle/
+android/local.properties
+
+# iOS specific (if not needed for build)
+ios/build/
+ios/Pods/
+ios/*.xcworkspace/xcuserdata/
+ios/*.xcodeproj/xcuserdata/
+ios/*.xcodeproj/project.xcworkspace/xcuserdata/
+
+# Large media files that aren't needed for build
+*.mov
+*.mp4
+*.avi
+*.mkv
+*.psd
+*.ai
+*.sketch
+
+# Backup files
+*.bak
+*.backup
+
+# Migration and setup files
+CODEMAGIC_MIGRATION_GUIDE.md
+APPCENTER_SETUP.md
+appcenter-config.json
+appcenter-post-build.sh

@@ -1,0 +1,27 @@
+<svg width="1024" height="1024" viewBox="0 0 1024 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#8B5CF6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#3B82F6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background Circle -->
+  <circle cx="512" cy="512" r="480" fill="url(#gradient)" stroke="#1E293B" stroke-width="8"/>
+  
+  <!-- Siya Logo - Stylized S -->
+  <path d="M350 300 Q400 250 450 300 Q500 350 450 400 Q400 450 350 400 Q300 350 350 300 Z" fill="white" opacity="0.9"/>
+  <path d="M574 400 Q624 350 674 400 Q724 450 674 500 Q624 550 574 500 Q524 450 574 400 Z" fill="white" opacity="0.9"/>
+  
+  <!-- Delivery Truck Icon -->
+  <rect x="300" y="600" width="120" height="80" rx="8" fill="white" opacity="0.8"/>
+  <rect x="420" y="620" width="60" height="60" rx="8" fill="white" opacity="0.8"/>
+  <circle cx="340" cy="700" r="20" fill="#1E293B"/>
+  <circle cx="450" cy="700" r="20" fill="#1E293B"/>
+  
+  <!-- Route Lines -->
+  <path d="M500 600 Q550 550 600 600 Q650 650 700 600" stroke="white" stroke-width="4" fill="none" opacity="0.6"/>
+  <circle cx="500" cy="600" r="6" fill="white"/>
+  <circle cx="600" cy="600" r="6" fill="white"/>
+  <circle cx="700" cy="600" r="6" fill="white"/>
+</svg>

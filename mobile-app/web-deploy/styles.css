@@ -1,0 +1,60 @@
+/* Additional styles for mobile download page */
+.download-section {
+    margin: 20px 0;
+}
+
+.build-status {
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    text-align: center;
+}
+
+.status-pending {
+    background-color: #fff3cd;
+    border: 1px solid #ffeaa7;
+    color: #856404;
+}
+
+.status-ready {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
+
+.download-link {
+    display: inline-block;
+    margin: 10px;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: transform 0.2s;
+}
+
+.download-link:hover {
+    transform: translateY(-2px);
+    color: white;
+}
+
+.download-link:disabled,
+.download-link.disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 20px;
+    }
+    
+    .download-link {
+        display: block;
+        margin: 10px 0;
+        text-align: center;
+    }
+}

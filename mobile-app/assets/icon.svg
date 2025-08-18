@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1024 1024">
+  <!-- Generator: Adobe Illustrator 29.6.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 9)  -->
+  <defs>
+    <style>
+      .st0 {
+        font-family: Arial-BoldMT, Arial;
+        font-size: 72px;
+        font-weight: 700;
+      }
+
+      .st0, .st1, .st2 {
+        fill: #fff;
+      }
+
+      .st0, .st2 {
+        isolation: isolate;
+      }
+
+      .st2 {
+        font-family: ArialMT, Arial;
+        font-size: 32px;
+        opacity: .8;
+      }
+
+      .st3 {
+        fill: #db2727;
+      }
+
+      .st4 {
+        opacity: .16;
+      }
+    </style>
+  </defs>
+  <text class="st0" transform="translate(431.28 750)"><tspan x="0" y="0">SIYA</tspan></text>
+  <text class="st2" transform="translate(449.46 820)"><tspan x="0" y="0">PORTAL</tspan></text>
+  <g class="st4">
+    <rect class="st1" x="61.63" y="61.27" width="901.75" height="901.75" rx="64.21" ry="64.21"/>
+  </g>
+  <path class="st1" d="M899.16,964.02H125.84c-35.96,0-65.21-29.25-65.21-65.21V125.48c0-35.96,29.25-65.21,65.21-65.21h773.32c35.96,0,65.21,29.25,65.21,65.21v773.32c0,35.96-29.25,65.21-65.21,65.21ZM125.84,62.27c-34.85,0-63.21,28.36-63.21,63.21v773.32c0,34.85,28.36,63.21,63.21,63.21h773.32c34.86,0,63.21-28.36,63.21-63.21V125.48c0-34.85-28.36-63.21-63.21-63.21H125.84Z"/>
+  <polygon class="st3" points="409.57 774.65 144.06 250.99 173.03 250.99 408.96 714.27 620.49 249.64 880.94 774.5 525.04 774.5 525.04 751.6 841.93 751.6 620.9 310.51 409.57 774.65"/>
+</svg>

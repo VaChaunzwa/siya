@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siya Portal Mobile App Download</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+        .logo {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        .download-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+            transition: transform 0.2s;
+        }
+        .download-btn:hover {
+            transform: translateY(-2px);
+        }
+        .download-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        .info {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: left;
+        }
+        .info h3 {
+            margin-top: 0;
+            color: #333;
+        }
+        .info ul {
+            margin: 10px 0;
+            padding-left: 20px;
+        }
+        .info li {
+            margin: 5px 0;
+            color: #666;
+        }
+        .qr-code {
+            margin: 20px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        .status {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 10px;
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            color: #856404;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">SP</div>
+        <h1>Siya Portal Mobile</h1>
+        <p class="subtitle">Download the mobile app for your device</p>
+        
+        <div class="status">
+            <strong>Status:</strong> App build in progress. Please check back later for download links.
+        </div>
+        
+        <button class="download-btn" disabled>Download for Android (APK)</button>
+        <button class="download-btn" disabled>Download for iOS</button>
+        
+        <div class="info">
+            <h3>App Features:</h3>
+            <ul>
+                <li>Secure user authentication</li>
+                <li>Real-time data synchronization</li>
+                <li>Offline capability</li>
+                <li>Push notifications</li>
+                <li>Cross-platform compatibility</li>
+            </ul>
+        </div>
+        
+        <div class="info">
+            <h3>Installation Instructions:</h3>
+            <ul>
+                <li><strong>Android:</strong> Download the APK file and enable "Install from unknown sources" in your device settings</li>
+                <li><strong>iOS:</strong> Use TestFlight or enterprise distribution (coming soon)</li>
+            </ul>
+        </div>
+        
+        <div class="qr-code">
+            <h3>Quick Access:</h3>
+            <p>Scan this QR code with your mobile device to access this page:</p>
+            <div style="background: white; padding: 10px; border-radius: 5px; display: inline-block;">
+                <!-- QR code would be generated here -->
+                <div style="width: 150px; height: 150px; background: #f0f0f0; display: flex; align-items: center; justify-content: center; border: 1px solid #ddd;">
+                    QR Code<br>Coming Soon
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        // Check for app updates periodically
+        function checkForUpdates() {
+            // This would check for new app builds
+            console.log('Checking for app updates...');
+        }
+        
+        // Check every 30 seconds
+        setInterval(checkForUpdates, 30000);
+        
+        // Initial check
+        checkForUpdates();
+    </script>
+</body>
+</html>

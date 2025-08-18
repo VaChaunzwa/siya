@@ -1,0 +1,16 @@
+{
+  "name": "siya-portal-mobile-download",
+  "version": "1.0.0",
+  "description": "Download page for Siya Portal Mobile App",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

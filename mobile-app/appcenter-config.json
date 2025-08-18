@@ -1,0 +1,8 @@
+{
+  "android": {
+    "app_secret": "ad1d6fe0a77a5493f158accb32c55dfbc1977fe8"
+  },
+  "ios": {
+    "app_secret": "db57fc88f45f19d38771dd16eb7b2378c5df2240"
+  }
+}

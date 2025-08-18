@@ -1,0 +1,73 @@
+{
+  "expo": {
+    "name": "Siya Portal Mobile",
+    "slug": "siya-portal-mobile",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon-square.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0F172A"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.siya.portal.mobile"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon-square.png",
+        "backgroundColor": "#0F172A"
+      },
+      "package": "com.chaunzwa.siyaportal",
+      "permissions": [
+        "INTERNET",
+        "ACCESS_NETWORK_STATE",
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE",
+        "RECORD_AUDIO",
+        "SYSTEM_ALERT_WINDOW",
+        "VIBRATE"
+      ]
+    },
+    "web": {
+    },
+    "plugins": [
+      "expo-font",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "compileSdkVersion": 34,
+            "targetSdkVersion": 34,
+            "minSdkVersion": 21,
+            "buildToolsVersion": "34.0.0",
+            "javaVersion": "17",
+            "kotlinOptions": {
+              "jvmTarget": "17"
+            },
+            "compileOptions": {
+              "sourceCompatibility": "17",
+              "targetCompatibility": "17"
+            }
+          }
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "5251cf91-f9bc-49a2-8165-643f23ce3619"
+      }
+    },
+    "scheme": "siya-portal-mobile",
+    "updates": {
+      "enabled": false
+    }
+  }
+}
