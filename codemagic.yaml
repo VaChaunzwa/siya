@@ -43,6 +43,9 @@ workflows:
           cd mobile-app
           rm -f package-lock.json
           npm install --legacy-peer-deps
+      - name: Install EAS CLI
+        script: |
+          npm install -g @expo/eas-cli
       - name: Build Android release
         script: |
           cd mobile-app
@@ -99,6 +102,9 @@ workflows:
           cd mobile-app
           rm -f package-lock.json
           npm install --legacy-peer-deps
+      - name: Install EAS CLI
+        script: |
+          npm install -g @expo/eas-cli
       - name: Build iOS release
         script: |
           cd mobile-app
