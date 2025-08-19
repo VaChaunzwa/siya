@@ -46,9 +46,6 @@ workflows:
           cd mobile-app
           rm -f package-lock.json
           npm install --legacy-peer-deps
-      - name: Install CocoaPods dependencies
-        script: |
-          cd mobile-app/ios && pod install
       - name: Set up keystore
         script: |
           cd mobile-app/android
@@ -119,27 +116,14 @@ workflows:
       - name: Install npm dependencies
         script: |
           cd mobile-app
-          npm ci --legacy-peer-deps
-      - name: Install CocoaPods dependencies
-        script: |
-          cd mobile-app/ios && pod install
-      - name: Set up provisioning profiles settings on Xcode project
-        script: |
-          cd mobile-app/ios
-          xcode-project use-profiles
-      - name: Increment build number
-        script: |
-          cd mobile-app/ios
-          LATEST_BUILD_NUMBER=$(app-store-connect get-latest-app-store-build-number "$APP_ID")
-          agvtool new-version -all $(($LATEST_BUILD_NUMBER + 1))
-      - name: Build ipa for distribution
+          rm -f package-lock.json
+          npm install --legacy-peer-deps
+      - name: Build iOS release
         script: |
           cd mobile-app
           export EAS_SKIP_AUTO_FINGERPRINT=1
           npx eas build --platform ios --profile production --local --output ./build.ipa
     artifacts:
-      - mobile-app/ios/build/ios/ipa/*.ipa
-      - /tmp/xcodebuild_logs/*.log
       - mobile-app/build.ipa
     publishing:
       email:
