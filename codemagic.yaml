@@ -17,6 +17,7 @@ workflows:
         # CM_KEYSTORE_PASSWORD: <your keystore password>
         # CM_KEY_ALIAS: <your key alias>
         # CM_KEY_PASSWORD: <your key password>
+        # EXPO_TOKEN: <your expo access token> # <-- Configure in Codemagic UI for EAS authentication
         PACKAGE_NAME: "com.siya.portal.mobile" # <-- Put your package name here
         GOOGLE_PLAY_TRACK: internal # <-- Any default internal track that is not in production
         EXPO_USE_FAST_RESOLVER: 1
@@ -46,6 +47,13 @@ workflows:
       - name: Install EAS CLI
         script: |
           npm install -g eas-cli
+      - name: Authenticate with EAS
+        script: |
+          if [ -n "$EXPO_TOKEN" ]; then
+            echo "Using EXPO_TOKEN for authentication"
+          else
+            echo "Warning: EXPO_TOKEN not set. Please configure it in Codemagic UI."
+          fi
       - name: Build Android release
         script: |
           cd mobile-app
@@ -76,6 +84,7 @@ workflows:
         distribution_type: app_store
         bundle_identifier: com.siya.portal.mobile
       vars:
+        # EXPO_TOKEN: <your expo access token> # <-- Configure in Codemagic UI for EAS authentication
         BUNDLE_ID: "com.siya.portal.mobile" # <-- Put your bundle identifier here
         XCODE_WORKSPACE: "SiyaPortalMobile.xcworkspace" # <-- Put the name of your Xcode workspace here
         XCODE_SCHEME: "SiyaPortalMobile" # <-- Put the name of your Xcode scheme here
@@ -105,6 +114,13 @@ workflows:
       - name: Install EAS CLI
         script: |
           npm install -g eas-cli
+      - name: Authenticate with EAS
+        script: |
+          if [ -n "$EXPO_TOKEN" ]; then
+            echo "Using EXPO_TOKEN for authentication"
+          else
+            echo "Warning: EXPO_TOKEN not set. Please configure it in Codemagic UI."
+          fi
       - name: Build iOS release
         script: |
           cd mobile-app
